@@ -1,11 +1,12 @@
-from . import ec
-from . import fields
-from . import groups
-from . import pairing
-from . import util as utils
-from .op_swu_g2 import g2_map
 from collections import namedtuple
-from .schemes import basic_scheme_dst
+
+from . import utils
+from .bls import ec
+from . import groups
+from .bls import fields
+from .bls import pairing
+from .bls.op_swu_g2 import g2_map
+from .bls.schemes import basic_scheme_dst
 
 delimeter = ';'
 byteorder = 'big'

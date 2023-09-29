@@ -1,4 +1,4 @@
-import src.util as utils
+import src.utils as utils
 import src.witenc as witenc
 import src.signature as bls
 

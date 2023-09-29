@@ -1,6 +1,6 @@
 import random
-from . import ec
-from . import pairing
+from .bls import ec
+from .bls import pairing
 
 def random_Zq():
     # sample random scalar
