@@ -10,8 +10,8 @@ seed: bytes = bytes([0,  50, 6,  244, 24,  199, 1,  25,  52,  88,  192,
 
 sk, pk = bls.key_gen(seed)
 
-tag: bytes = utils.to_bytes("tag")
-message: bytes = utils.to_bytes("Hello World")
+tag: str = 'tag'
+message: str = 'message to be encrypted'
 
 signature = bls.sign(sk, tag)
 # Verify the signature
@@ -27,4 +27,9 @@ print("Public key: " + pk_str)
 print("Signature: " + sig_str)
 
 # Encrypt the message
-ciphertext: bytes = witenc.enc(pk, tag, message)
+ciphertext: str = witenc.enc(pk, tag, message)
+print("Ciphertext\n" + ciphertext)
+# Decrypt the message
+decrypted_message: str = witenc.dec(signature, ciphertext)
+assert message == decrypted_message
+print("Decrypted message\n" + decrypted_message)
