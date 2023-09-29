@@ -1,6 +1,6 @@
-import bindings.util as utils
-import bindings.witenc as witenc
-import bindings.signature as bls
+import src.util as utils
+import src.witenc as witenc
+import src.signature as bls
 
 # Example seed, used to generate private key. Always use
 # a secure RNG with sufficient entropy to generate a seed (at least 32 bytes).
