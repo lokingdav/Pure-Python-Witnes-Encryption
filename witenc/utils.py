@@ -1,5 +1,5 @@
 from datetime import datetime
-from .bls import util
+from .chianetbls import util
 
 def hash256(m):
     return util.hash256(m)
@@ -8,20 +8,23 @@ def to_bytes(data) -> bytes:
     return bytes(data, 'utf-8')
 
 def to_str(data: bytes) -> str:
+    if type(data) is bytes:
+        return data.hex()
+
     return bytes(data).hex()
 
 def tuple_to_str(items, delimeter=";") -> str:
     chunks = []
-    
+
     for item in items:
         chunks.append(to_str(item))
-        
+
     return delimeter.join(chunks)
 
 def to_int(data: bytes) -> int:
     if type(data) is not bytes:
         data = to_bytes(data)
-        
+
     return int.from_bytes(data, 'big')
 
 def timed(func):
