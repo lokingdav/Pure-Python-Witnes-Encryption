@@ -1,6 +1,6 @@
-import src.utils as utils
-import src.witenc as witenc
-import src.signature as bls
+import witenc.utils as utils
+import witenc.witenc as witenc
+import witenc.signature as bls
 
 # Example seed, used to generate private key. Always use
 # a secure RNG with sufficient entropy to generate a seed (at least 32 bytes).
