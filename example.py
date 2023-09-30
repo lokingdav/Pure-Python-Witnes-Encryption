@@ -1,4 +1,4 @@
-from witenc import bls, witenc, utils
+from witenc import bls, utils, encrypt, decrypt
 
 # Example seed, used to generate private key. Always use
 # a secure RNG with sufficient entropy to generate a seed (at least 32 bytes).
@@ -35,10 +35,10 @@ assert ok
 print("Signature verified")
 
 # Encrypt the message
-ciphertext: str = witenc.enc(pk, tag, message)
+ciphertext: str = encrypt(pk, tag, message)
 
 # Decrypt the message
-decrypted_message: str = witenc.dec(signature, ciphertext)
+decrypted_message: str = decrypt(signature, ciphertext)
 
 assert message == decrypted_message
 print("Decrypted message\n" + decrypted_message)

@@ -1,4 +1,5 @@
-from . import groups
 from . import bls
 from . import utils
-from . import witenc
+from . import groups
+from .witenc import enc as encrypt
+from .witenc import dec as decrypt
