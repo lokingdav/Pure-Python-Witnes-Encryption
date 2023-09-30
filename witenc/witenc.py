@@ -1,12 +1,12 @@
 from collections import namedtuple
 
 from . import utils
-from .bls import ec
+from .chianetbls import ec
 from . import groups
-from .bls import fields
-from .bls import pairing
-from .bls.op_swu_g2 import g2_map
-from .bls.schemes import basic_scheme_dst
+from .chianetbls import fields
+from .chianetbls import pairing
+from .chianetbls.op_swu_g2 import g2_map
+from .chianetbls.schemes import basic_scheme_dst
 
 delimeter = ';'
 byteorder = 'big'
@@ -16,23 +16,23 @@ def enc(pk: ec.G1Element, tag: str, message: str) -> str:
     r1 = groups.random_Zq()
     r2 = groups.random_GT()
     c1 = r1 * ec.G1Generator()
-    
+
     h = utils.hash256(bytes(r2))
     gt = pairing.ate_pairing(pk, g2_map(tag, basic_scheme_dst)) ** r1
-    
+
     c2 = bytes(gt * r2)
     c3 = encode_msg(message, h)
     ciphertext = utils.tuple_to_str((c1, c2, c3), delimeter)
-    
+
     return ciphertext
-    
+
 def dec(signature: ec.G2Element, ciphertext: str) -> str:
     c1, c2, c3 = parse_ciphertext(ciphertext)
     c1 = ec.G1FromBytes(c1)
     c2 = fields.Fq12.from_bytes(buffer=c2, Q=ec.default_ec.q)
-    
+
     r2 = c2 / pairing.ate_pairing(c1, signature)
-    
+
     h = utils.hash256(bytes(r2))
     message = decode_msg(c3, h)
 
