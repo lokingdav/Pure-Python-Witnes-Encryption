@@ -22,7 +22,9 @@ def tuple_to_str(items, delimeter=";") -> str:
     for item in items:
         chunks.append(to_str(item))
 
-    return delimeter.join(chunks)
+    string = delimeter.join(chunks)
+    
+    return to_bytes(string).hex()
 
 def to_int(data: bytes) -> int:
     if type(data) is not bytes:

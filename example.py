@@ -36,6 +36,7 @@ print("Signature verified")
 
 # Encrypt the message
 ciphertext: str = encrypt(pk, tag, message)
+print("Ciphertext:\n" + ciphertext)
 
 # Decrypt the message
 decrypted_message: str = decrypt(signature, ciphertext)

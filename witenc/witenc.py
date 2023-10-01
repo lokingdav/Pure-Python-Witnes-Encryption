@@ -39,6 +39,7 @@ def dec(signature: ec.G2Element, ciphertext: str) -> str:
     return message
 
 def parse_ciphertext(ciphertext: str):
+    ciphertext = bytes.fromhex(ciphertext).decode()
     c1, c2, c3 = ciphertext.split(delimeter)
     return bytes.fromhex(c1), bytes.fromhex(c2), c3
 
