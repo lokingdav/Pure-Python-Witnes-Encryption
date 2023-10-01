@@ -23,7 +23,7 @@ def tuple_to_str(items, delimeter=";") -> str:
         chunks.append(to_str(item))
 
     string = delimeter.join(chunks)
-    
+
     return to_bytes(string).hex()
 
 def to_int(data: bytes) -> int:
@@ -43,7 +43,7 @@ def timed(func):
 def get_elapsed_time(start):
     return round((datetime.now() - start).total_seconds(), 2)
 
-def bit_len(data):
+def size_in_bytes(data):
     return data.bit_length() // 8 + 1
 
 def export_sk(sk: PrivateKey, type: str = 'hex') -> bytes:

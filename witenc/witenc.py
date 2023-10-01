@@ -12,6 +12,9 @@ delimeter = ';'
 byteorder = 'big'
 
 def enc(pk: ec.G1Element, tag: str, message: str) -> str:
+    if not isinstance(pk, ec.G1Element):
+        raise TypeError("pk must be of type G1Element")
+
     tag = utils.to_bytes(tag)
     r1 = groups.random_Zq()
     r2 = groups.random_GT()
@@ -27,6 +30,9 @@ def enc(pk: ec.G1Element, tag: str, message: str) -> str:
     return ciphertext
 
 def dec(signature: ec.G2Element, ciphertext: str) -> str:
+    if not isinstance(signature, ec.G2Element):
+        raise TypeError("signature must be of type G2Element")
+
     c1, c2, c3 = parse_ciphertext(ciphertext)
     c1 = ec.G1FromBytes(c1)
     c2 = fields.Fq12.from_bytes(buffer=c2, Q=ec.default_ec.q)
@@ -47,11 +53,11 @@ def encode_msg(message: str, hash) -> str:
     message = utils.to_int(message)
     hash = utils.to_int(hash)
     c3 = (hash + message) % ec.default_ec.n
-    c3 = c3.to_bytes(utils.bit_len(c3), byteorder)
+    c3 = c3.to_bytes(utils.size_in_bytes(c3), byteorder)
     return c3
 
 def decode_msg(c3: str, hash) -> str:
     c3, hash = int(c3, 16), utils.to_int(hash)
     message = (c3 - hash) % ec.default_ec.n
-    message = message.to_bytes(utils.bit_len(message), byteorder)
+    message = message.to_bytes(utils.size_in_bytes(message), byteorder)
     return message.decode()
