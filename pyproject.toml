@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "witenc"
-version = "0.1.0"
+version = "0.1.1"
 description = "Implements a signature based witness encryption scheme based on the BLS signatures"
 authors = ["David L. Adei <lokingdav@gmail.com>"]
 license = "Apache License 2.0"
