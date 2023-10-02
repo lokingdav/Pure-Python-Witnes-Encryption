@@ -6,3 +6,8 @@ Uses the following implementations from [Chia-Network/bls-signatures](https://gi
 - BLS12 curve and optimal ate pairing
 - BLS signatures
 - Other useful helper methods
+
+## Installation
+```python
+pip install witenc
+```
