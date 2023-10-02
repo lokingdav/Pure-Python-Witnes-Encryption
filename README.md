@@ -88,5 +88,5 @@ print("Decrypted message\n" + decrypted_message)
 
 ## Witenc license
 
-Witenc is used with the
+Witenc uses code from [Chia-Network/bls-signatures](https://github.com/Chia-Network/bls-signatures/tree/main) and licensed under the
 [Apache 2.0 license](https://github.com/kofi-dalvik/witenc/blob/master/LICENSE)
