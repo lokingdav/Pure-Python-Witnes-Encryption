@@ -85,3 +85,8 @@ decrypted_message: str = decrypt(signature, ciphertext)
 assert message == decrypted_message
 print("Decrypted message\n" + decrypted_message)
 ```
+
+## Witenc license
+
+Witenc is used with the
+[Apache 2.0 license](https://github.com/kofi-dalvik/witenc/blob/master/LICENSE)
