@@ -86,6 +86,8 @@ assert message == decrypted_message
 print("Decrypted message\n" + decrypted_message)
 ```
 
+Full example can be found in [example.py](https://github.com/kofi-dalvik/witenc/blob/master/example.py).
+
 ## Witenc license
 
 Witenc uses code from [Chia-Network/bls-signatures](https://github.com/Chia-Network/bls-signatures/tree/main) and licensed under the
