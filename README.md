@@ -22,9 +22,7 @@ from witenc import bls, utils, encrypt, decrypt
 ```python
 # Example seed, used to generate private key. Always use
 # a secure RNG with sufficient entropy to generate a seed (at least 32 bytes).
-seed: bytes = bytes([0,  50, 6,  244, 24,  199, 1,  25,  52,  88,  192,
-                        19, 18, 12, 89,  6,   220, 18, 102, 58,  209, 82,
-                        12, 62, 89, 110, 182, 9,   44, 20,  254, 22])
+seed: bytes = bytes([random.randint(0, 255) for _ in range(32)])
 
 # Generate secret key and public key
 sk, pk = bls.key_gen(seed)
